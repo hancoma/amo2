@@ -236,7 +236,7 @@ function app_version_check(token) {
      } else {
    
 
-  ref = cordova.InAppBrowser.open('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token+'&version='+app_version, '_blank', 'location=no,hardwareback=yes');
+  ref = cordova.InAppBrowser.open('https://console-mobile-dev.cloudbric.com?uuid='+uuid+'&token='+app_token+'&version='+app_version, '_blank', 'location=no,hardwareback=yes');
    console.log('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token);
    ref.addEventListener('loadstart', inAppBrowserbLoadStart);
    ref.addEventListener('loadstop', inAppBrowserbLoadStop);
@@ -308,7 +308,7 @@ function alert_msg(title,msg) {
 );
 }
  
-  
+
 // 종류
 function exit_show() {
 navigator.notification.confirm("Are you sure you want to exit? ", onConfirm, "NOTICE", "YES,NO"); 
