@@ -103,6 +103,7 @@ push.on('notification', function(data) {
  // display_call_info(data.message);
  var toast = function (mes,dur,pos) {
  window.plugins.toast.showWithOptions({ window.plugins.toast.show(data.message, 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
+}) };
   toast(data.message,'short','bottom');
   //alert_msg("NOTICE",data.message);
  
