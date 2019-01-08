@@ -21,6 +21,7 @@
  var version_check="n";
  var token="";
  var ref_app="";
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -101,10 +102,10 @@ push.on('registration', function(data) {
 push.on('notification', function(data) {
 //  alert(data.message);
  // display_call_info(data.message);
- var toast = function (mes,dur,pos) {
- window.plugins.toast.showWithOptions({ window.plugins.toast.show(data.message, 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
-}) };
-  toast(data.message,'short','bottom');
+ 
+  var toast = function (mes,dur,pos) {
+window.plugins.toast.show(data.message, 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
+};
   //alert_msg("NOTICE",data.message);
  
  
@@ -125,6 +126,8 @@ push.on('error', function(e) {
 
 };
   
+
+
 function save_reg_id(reg_id) {
     var reg_id=reg_id;
     var cordova=device.cordova;
@@ -305,6 +308,7 @@ function alert_msg(title,msg) {
 );
 }
  
+  
 // 종류
 function exit_show() {
 navigator.notification.confirm("Are you sure you want to exit? ", onConfirm, "NOTICE", "YES,NO"); 
