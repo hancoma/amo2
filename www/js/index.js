@@ -348,7 +348,7 @@ function inAppBrowserbLoadStop(event) {
 }
 
 function inAppBrowserbLoadError(event) {
-   navigator.notification.activityStop();
+   alert("network error");
 }
 
 function inAppBrowserbClose(event) {
