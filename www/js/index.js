@@ -130,7 +130,7 @@ push.on('error', function(e) {
   function checkconnection(){ 
     var net_stat=navigator.onLine;
     if (net_stat=="false") {
-      alert_msg("error network");
+    toast('network error','short','bottom');
 
     } else {
       app.onmain();
