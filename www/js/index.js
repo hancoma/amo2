@@ -104,9 +104,7 @@ push.on('notification', function(data) {
 //  alert(data.message);
  // display_call_info(data.message);
  
-  var toast = function (mes,dur,pos) {
-window.plugins.toast.show(data.message, 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
-};
+
   //alert_msg("NOTICE",data.message);
  
  
@@ -126,7 +124,10 @@ push.on('error', function(e) {
     }
 
 };
-  
+    var toast = function (mes,dur,pos) {
+window.plugins.toast.show(data.message, 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
+};
+
   function checkconnection(){ 
     var net_stat=navigator.onLine;
     if (net_stat=="false") {
