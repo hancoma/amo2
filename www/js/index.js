@@ -56,12 +56,12 @@ var app = {
 
         console.log('Received Event: ' + id);
     
-
-            app.onmain();
+   checkconnection(); 
+           // app.onmain();
     },
 
     onmain : function() {
-        checkconnection(); 
+     
 document.addEventListener("backbutton", exit_show, false); 
          var reg_id=device.uuid;
        // 기기 번호 검출 
@@ -127,7 +127,16 @@ push.on('error', function(e) {
 
 };
   
-  function checkconnection(){ alert(navigator.onLine);} 
+  function checkconnection(){ 
+    var net_stat=navigator.onLine;
+    if (net_stat=="false") {
+      alert_msg("error network");
+
+    } else {
+      app.onmain();
+    }
+
+  } 
   
 
 
