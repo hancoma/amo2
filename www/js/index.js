@@ -130,11 +130,13 @@ window.plugins.toast.show(data.message, 'long', 'center', function(a){console.lo
 
   function checkconnection(){ 
     var net_stat=navigator.onLine;
-    if (net_stat==false) {
-    toast('network error','short','bottom');
+    console.log(net_stat);
+    if (net_stat==true) {
+    app.onmain();
 
     } else {
-      app.onmain();
+      alert("network error");
+      
     }
 
   } 

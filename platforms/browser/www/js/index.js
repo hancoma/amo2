@@ -56,11 +56,12 @@ var app = {
 
         console.log('Received Event: ' + id);
     
-
-            app.onmain();
+   checkconnection(); 
+           // app.onmain();
     },
 
     onmain : function() {
+     
 document.addEventListener("backbutton", exit_show, false); 
          var reg_id=device.uuid;
        // 기기 번호 검출 
@@ -103,9 +104,7 @@ push.on('notification', function(data) {
 //  alert(data.message);
  // display_call_info(data.message);
  
-  var toast = function (mes,dur,pos) {
-window.plugins.toast.show(data.message, 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
-};
+
   //alert_msg("NOTICE",data.message);
  
  
@@ -125,6 +124,22 @@ push.on('error', function(e) {
     }
 
 };
+    var toast = function (mes,dur,pos) {
+window.plugins.toast.show(data.message, 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
+};
+
+  function checkconnection(){ 
+    var net_stat=navigator.onLine;
+    console.log(net_stat);
+    if (net_stat==true) {
+    app.onmain();
+
+    } else {
+      alert("network error");
+      
+    }
+
+  } 
   
 
 
@@ -236,7 +251,7 @@ function app_version_check(token) {
      } else {
    
 
-  ref = cordova.InAppBrowser.open('https://console-mobile-dev.cloudbric.com?uuid='+uuid+'&token='+app_token+'&version='+app_version, '_blank', 'location=no,hardwareback=yes');
+  ref = cordova.InAppBrowser.open('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token+'&version='+app_version, '_blank', 'location=no,hardwareback=yes');
    console.log('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token);
    ref.addEventListener('loadstart', inAppBrowserbLoadStart);
    ref.addEventListener('loadstop', inAppBrowserbLoadStop);
