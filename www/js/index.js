@@ -19,6 +19,7 @@
  var telephone_number; // 전화번호 전역 함수 
  var app_version="1.0.9";
  var version_check="n";
+ var mode="start";
  var token="";
  var ref_app="";
 
@@ -135,7 +136,9 @@ window.plugins.toast.show(data.message, 'long', 'center', function(a){console.lo
     app.onmain();
 
     } else {
-      alert("network error");
+    mode="error";
+  
+   gopage("error.html");
       
     }
 
@@ -256,8 +259,7 @@ function app_version_check(token) {
    ref.addEventListener('loadstart', inAppBrowserbLoadStart);
    ref.addEventListener('loadstop', inAppBrowserbLoadStop);
    ref.addEventListener('loaderror', inAppBrowserbLoadError);
-   //ref.addEventListener("backbutton", exit_show);
-   ref.addEventListener("backbutton", function () { alert("asd"); exit;})
+  
    ref.addEventListener('exit', exit_show);
 
      }
@@ -326,13 +328,21 @@ function alert_msg(title,msg) {
 
 // 종류
 function exit_show() {
-navigator.notification.confirm("Are you sure you want to exit? ", onConfirm, "NOTICE", "YES,NO"); 
+ if(mode!="error") {
+  navigator.notification.confirm("Are you sure you want to exit? ", onConfirm, "NOTICE", "YES,NO"); 
+  } else {
+    mode="start";
+  }
 }
 
 function onConfirm(button) {
     if(button==2){//If User selected No, then we just do nothing
+      mode="start";
       var ref = cordova.InAppBrowser.open('https://console-mobile.cloudbric.com', '_blank', 'location=no');
-   ref .addEventListener('exit', exit_show);
+    ref.addEventListener('loadstart', inAppBrowserbLoadStart);
+   ref.addEventListener('loadstop', inAppBrowserbLoadStop);
+   ref.addEventListener('loaderror', inAppBrowserbLoadError);
+   ref.addEventListener('exit', exit_show);
         return;
     }else{
         navigator.app.exitApp();// Otherwise we quit the app.
@@ -348,7 +358,10 @@ function inAppBrowserbLoadStop(event) {
 }
 
 function inAppBrowserbLoadError(event) {
-   alert("network error");
+    mode="error";
+  
+   gopage("error.html");
+   ref.close();
 }
 
 function inAppBrowserbClose(event) {
@@ -412,3 +425,8 @@ function alertDismissed() {
    function onBackKeyDown(e) { 
     e.preventDefault(); 
 } 
+
+function gopage (page) {
+    var page=page;
+    location.href=page;
+}
