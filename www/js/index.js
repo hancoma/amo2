@@ -105,7 +105,7 @@ push.on('notification', function(data) {
  // display_call_info(data.message);
  
 
-  //alert_msg("NOTICE",data.message);
+  alert_msg("NOTICE",data.message);
  
  
     
