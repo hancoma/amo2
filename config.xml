@@ -1,4 +1,4 @@
-﻿<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.cloudbric.console" version="1.0.8" versionCode = "10008">
+﻿<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.cloudbric.console" version="1.0.9" versionCode = "10009">
   <name>Cloudbric</name>
   <description>Cloudbric</description>
   <author href="http://hancoma.com" email="ch7@daum.net">김대경</author>
