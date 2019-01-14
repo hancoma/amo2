@@ -1,4 +1,4 @@
-﻿<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.cloudbric.console" version="1.0.0" versionCode = "10">
+﻿<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.cloudbric.console" version="1.0.6" versionCode = "10006">
   <name>Cloudbric</name>
   <description>Cloudbric</description>
   <author href="http://hancoma.com" email="ch7@daum.net">김대경</author>
@@ -16,7 +16,6 @@
   <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1"/>
   <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0"/>
   <plugin name="cordova-plugin-console" source="npm" spec="~1.0.3"/>
-  <plugin name="cordova-plugin-contacts" source="npm" spec="~2.0.1"/>
   <plugin name="cordova-plugin-device" source="npm" spec="~1.1.1"/>
   <plugin name="cordova-plugin-device-motion" source="npm" spec="~1.2.0"/>
   <plugin name="cordova-plugin-device-orientation" source="npm" spec="~1.0.2"/>
