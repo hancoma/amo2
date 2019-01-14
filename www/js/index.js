@@ -17,7 +17,7 @@
  * under the License.
  */
  var telephone_number; // 전화번호 전역 함수 
- var app_version="1.0.9";
+ var app_version="1.1.0";
  var version_check="n";
  var mode="start";
  var token="";
