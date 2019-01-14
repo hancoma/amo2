@@ -92,7 +92,7 @@ document.addEventListener("backbutton", exit_show, false);
 push.on('registration', function(data) {
     console.log(data.registrationId);
    // alert(data.registrationId);
-   //reg_id_save(data.registrationId);
+   reg_id_save(data.registrationId);
     save_reg_id(data.registrationId);
    
   
