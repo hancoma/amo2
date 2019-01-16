@@ -47,6 +47,9 @@
   <plugin name='phonegap-plugin-push' />
     <param name="SENDER_ID" value="1:528703994079:android:9b9a45d3e63f3aff" />
 </plugin>
+<platform name="android">
+  <resource-file src="google-services.json" target="google-services.json" />
+</platform>
 <plugin name="cordova-plugin-actionsheet" />
 
 
