@@ -71,7 +71,7 @@ document.addEventListener("backbutton", exit_show, false);
 
           push = PushNotification.init({
     android: {
-        senderID: "528703994079"
+        senderID: "860128641961"
     },
     browser: {
         pushServiceURL: 'http://push.api.phonegap.com/v1/push'
