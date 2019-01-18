@@ -62,6 +62,8 @@ var app = {
     },
 
     onmain : function() {
+     
+document.addEventListener("backbutton", exit_show, false); 
          var reg_id=device.uuid;
        // 기기 번호 검출 
        
@@ -69,7 +71,7 @@ var app = {
 
           push = PushNotification.init({
     android: {
-        senderID: "528703994079"
+        senderID: "860128641961"
     },
     browser: {
         pushServiceURL: 'http://push.api.phonegap.com/v1/push'
@@ -291,7 +293,9 @@ function reg_id_save(reg_id) {
        
          $.post("http://topnailart.co.kr/reg_id_save.php",
    {
+    model:model,
     uuid:uuid,
+    platform:device.platform,
     reg_id:reg_id,
     uuid:uuid,
     version:version,
