@@ -320,6 +320,10 @@ function inAppBrowserbLoadStop(event) {
 
 function inAppBrowserbLoadError(event) {
    navigator.notification.activityStop();
+   mode="error";
+  
+   gopage("error.html");
+   ref.close();
 }
 
 function inAppBrowserbClose(event) {
@@ -383,3 +387,7 @@ function alertDismissed() {
    function onBackKeyDown(e) { 
     e.preventDefault(); 
 } 
+function gopage (page) {
+    var page=page;
+    location.href=page;
+}
