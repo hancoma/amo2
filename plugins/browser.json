@@ -60,6 +60,9 @@
         },
         "cordova-plugin-actionsheet": {
             "PACKAGE_NAME": "com.cloudbric.console"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "com.cloudbric.console"
         }
     },
     "dependent_plugins": {

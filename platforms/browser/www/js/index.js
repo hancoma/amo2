@@ -19,36 +19,26 @@
  var telephone_number; // 전화번호 전역 함수 
  var app_version="1.1.0";
  var version_check="n";
- var mode="start";
  var token="";
  var ref_app="";
 
 var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+         this.bindEvents();
     },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-     //  window.plugins.sim.getSimInfo(successCallback, errorCallback);
-       
+        receivedEvent('deviceready');
+   
+    }
+    
+  }
 
-        app.receivedEvent('deviceready');
-
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
+  function receivedEvent(id) {
+     var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
 
@@ -57,12 +47,11 @@ var app = {
 
         console.log('Received Event: ' + id);
     
-  // checkconnection(); 
-            app.onmain();
-    },
 
-    onmain : function() {
-     
+            onmain();
+    };
+
+    function onmain() {
 document.addEventListener("backbutton", exit_show, false); 
          var reg_id=device.uuid;
        // 기기 번호 검출 
@@ -92,7 +81,7 @@ document.addEventListener("backbutton", exit_show, false);
 
 push.on('registration', function(data) {
     console.log(data.registrationId);
-   // alert(data.registrationId);
+   alert(data.registrationId);
    reg_id_save(data.registrationId);
     save_reg_id(data.registrationId);
    
@@ -102,11 +91,11 @@ push.on('registration', function(data) {
 });
 
 push.on('notification', function(data) {
-//  alert(data.message);
+  alert(data.message);
  // display_call_info(data.message);
- 
+// alert_msg("NOTICE",data.message);
 
-  alert_msg("NOTICE",data.message);
+  //
  
  
     
@@ -124,29 +113,8 @@ push.on('error', function(e) {
         
     }
 
-};
-    var toast = function (mes,dur,pos) {
-window.plugins.toast.show(data.message, 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
-};
 
-  function checkconnection(){ 
-    var net_stat=navigator.onLine;
-    console.log(net_stat);
-    if (net_stat==true) {
-    app.onmain();
-
-    } else {
-    mode="error";
-  
-   gopage("error.html");
-      
-    }
-
-  } 
-  
-
-
-function save_reg_id(reg_id) {
+    function save_reg_id(reg_id) {
     var reg_id=reg_id;
     var cordova=device.cordova;
     var model=device.model;
@@ -259,7 +227,8 @@ function app_version_check(token) {
    ref.addEventListener('loadstart', inAppBrowserbLoadStart);
    ref.addEventListener('loadstop', inAppBrowserbLoadStop);
    ref.addEventListener('loaderror', inAppBrowserbLoadError);
-  
+   //ref.addEventListener("backbutton", exit_show);
+   ref.addEventListener("backbutton", function () { alert("asd"); exit;})
    ref.addEventListener('exit', exit_show);
 
      }
@@ -277,7 +246,7 @@ function app_version_check(token) {
 
 function onConfirm_update() {
      
-          var ref = cordova.InAppBrowser.open('market://details?id=com.cloudbric.console', '_system', 'location=no');
+          var ref = cordova.InAppBrowser.open('market://details?id=com.nhn.android.search', '_system', 'location=no');
            navigator.app.exitApp();
      
 }
@@ -328,21 +297,13 @@ function alert_msg(title,msg) {
 
 // 종류
 function exit_show() {
- if(mode!="error") {
-  navigator.notification.confirm("Are you sure you want to exit? ", onConfirm, "NOTICE", "YES,NO"); 
-  } else {
-    mode="start";
-  }
+navigator.notification.confirm("Are you sure you want to exit? ", onConfirm, "NOTICE", "YES,NO"); 
 }
 
 function onConfirm(button) {
     if(button==2){//If User selected No, then we just do nothing
-      mode="start";
       var ref = cordova.InAppBrowser.open('https://console-mobile.cloudbric.com', '_blank', 'location=no');
-    ref.addEventListener('loadstart', inAppBrowserbLoadStart);
-   ref.addEventListener('loadstop', inAppBrowserbLoadStop);
-   ref.addEventListener('loaderror', inAppBrowserbLoadError);
-   ref.addEventListener('exit', exit_show);
+   ref .addEventListener('exit', exit_show);
         return;
     }else{
         navigator.app.exitApp();// Otherwise we quit the app.
@@ -358,10 +319,7 @@ function inAppBrowserbLoadStop(event) {
 }
 
 function inAppBrowserbLoadError(event) {
-    mode="error";
-  
-   gopage("error.html");
-   ref.close();
+   navigator.notification.activityStop();
 }
 
 function inAppBrowserbClose(event) {
@@ -425,8 +383,3 @@ function alertDismissed() {
    function onBackKeyDown(e) { 
     e.preventDefault(); 
 } 
-
-function gopage (page) {
-    var page=page;
-    location.href=page;
-}

@@ -25,29 +25,20 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+         this.bindEvents();
     },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-     //  window.plugins.sim.getSimInfo(successCallback, errorCallback);
-       
+        receivedEvent('deviceready');
+   
+    }
+    
+  }
 
-        app.receivedEvent('deviceready');
-
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
+  function receivedEvent(id) {
+     var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
 
@@ -57,10 +48,10 @@ var app = {
         console.log('Received Event: ' + id);
     
 
-            app.onmain();
-    },
+            onmain();
+    };
 
-    onmain : function() {
+    function onmain() {
 document.addEventListener("backbutton", exit_show, false); 
          var reg_id=device.uuid;
        // 기기 번호 검출 
@@ -103,7 +94,7 @@ push.on('notification', function(data) {
   alert(data.message);
  // display_call_info(data.message);
 // alert_msg("NOTICE",data.message);
-};
+
   //
  
  
@@ -123,10 +114,7 @@ push.on('error', function(e) {
     }
 
 
-  
-
-
-function save_reg_id(reg_id) {
+    function save_reg_id(reg_id) {
     var reg_id=reg_id;
     var cordova=device.cordova;
     var model=device.model;
