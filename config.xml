@@ -4,8 +4,8 @@
   <author href="http://hancoma.com" email="ch7@daum.net">김대경</author>
   <content src="index.html"/>
  <preference name="orientation" value="portrait" />
-<preference name='phonegap-version' value='cli-7.5.1' />
-<preference name='pgb-builder-version' value='2' />
+<preference name='phonegap-version' value='cli-7.0.1' />
+<preference name='pgb-builder-version' value='3' />
   <preference name="DisallowOverscroll" value="true"/>
    <preference name="android-minSdkVersion" value="19"/>
    <preference name="android-targetSdkVersion" value="27" /> 
