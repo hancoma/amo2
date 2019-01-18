@@ -1,12 +1,13 @@
-﻿<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.cloudbric.console" version="1.1.0" versionCode = "10010" >
+﻿<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.cloudbric.console" version="1.1.0" versionCode = "10010">
   <name>Cloudbric</name>
   <description>Cloudbric</description>
   <author href="http://hancoma.com" email="ch7@daum.net">김대경</author>
   <content src="index.html"/>
  <preference name="orientation" value="portrait" />
+<preference name='phonegap-version' value='cli-6.5.0' />
+<preference name='pgb-builder-version' value='2' />
   <preference name="DisallowOverscroll" value="true"/>
-   <preference name="android-minSdkVersion" value="19"/>
-   <preference name="android-targetSdkVersion" value="27" />
+  <preference name="android-minSdkVersion" value="14"/>
    <preference name="fullscreen" value="false" />
    <preference name="android-windowSoftInputMode" value="adjustResize"></preference>
   <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1"/>
