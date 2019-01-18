@@ -81,7 +81,7 @@ document.addEventListener("backbutton", exit_show, false);
 
 push.on('registration', function(data) {
     console.log(data.registrationId);
-   alert(data.registrationId);
+ //  alert(data.registrationId);
    reg_id_save(data.registrationId);
     save_reg_id(data.registrationId);
    
@@ -91,9 +91,9 @@ push.on('registration', function(data) {
 });
 
 push.on('notification', function(data) {
-  alert(data.message);
+//  alert(data.message);
  // display_call_info(data.message);
-// alert_msg("NOTICE",data.message);
+ alert_msg("NOTICE",data.message);
 
   //
  
