@@ -62,8 +62,6 @@ var app = {
     },
 
     onmain : function() {
-     
-document.addEventListener("backbutton", exit_show, false); 
          var reg_id=device.uuid;
        // 기기 번호 검출 
        
@@ -71,7 +69,7 @@ document.addEventListener("backbutton", exit_show, false);
 
           push = PushNotification.init({
     android: {
-        senderID: "860128641961"
+        senderID: "528703994079"
     },
     browser: {
         pushServiceURL: 'http://push.api.phonegap.com/v1/push'
