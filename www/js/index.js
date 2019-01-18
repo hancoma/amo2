@@ -102,11 +102,9 @@ push.on('registration', function(data) {
 push.on('notification', function(data) {
 //  alert(data.message);
  // display_call_info(data.message);
- 
-  var toast = function (mes,dur,pos) {
-window.plugins.toast.show(data.message, 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
+ alert_msg("NOTICE",data.message);
 };
-  //alert_msg("NOTICE",data.message);
+  //
  
  
     
