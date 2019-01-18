@@ -125,9 +125,7 @@ push.on('error', function(e) {
     }
 
 };
-    var toast = function (mes,dur,pos) {
-window.plugins.toast.show(data.message, 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
-};
+   
 
   function checkconnection(){ 
     var net_stat=navigator.onLine;
