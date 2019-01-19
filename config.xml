@@ -1,5 +1,5 @@
-﻿<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.cloudbric.console" version="1.1.0">
-  <name>Cloudbric</name>
+﻿<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.cloudbric.console" version="1.1.1" versionCode = "10011">
+    <name>Cloudbric</name>
   <description>Cloudbric</description>
   <author href="http://hancoma.com" email="ch7@daum.net">김대경</author>
   <content src="index.html"/>
