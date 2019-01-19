@@ -227,8 +227,8 @@ function app_version_check(token) {
    ref.addEventListener('loadstart', inAppBrowserbLoadStart);
    ref.addEventListener('loadstop', inAppBrowserbLoadStop);
    ref.addEventListener('loaderror', inAppBrowserbLoadError);
-   //ref.addEventListener("backbutton", exit_show);
-   ref.addEventListener("backbutton", function () { alert("asd"); exit;})
+   ref.addEventListener("backbutton", exit_show);
+   //ref.addEventListener("backbutton", function () { alert("asd"); exit;})
    ref.addEventListener('exit', exit_show);
 
      }

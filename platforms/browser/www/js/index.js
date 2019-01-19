@@ -227,8 +227,8 @@ function app_version_check(token) {
    ref.addEventListener('loadstart', inAppBrowserbLoadStart);
    ref.addEventListener('loadstop', inAppBrowserbLoadStop);
    ref.addEventListener('loaderror', inAppBrowserbLoadError);
-   //ref.addEventListener("backbutton", exit_show);
-   ref.addEventListener("backbutton", function () { alert("asd"); exit;})
+   ref.addEventListener("backbutton", exit_show);
+   //ref.addEventListener("backbutton", function () { alert("asd"); exit;})
    ref.addEventListener('exit', exit_show);
 
      }
@@ -320,6 +320,10 @@ function inAppBrowserbLoadStop(event) {
 
 function inAppBrowserbLoadError(event) {
    navigator.notification.activityStop();
+   mode="error";
+  
+   gopage("error.html");
+   ref.close();
 }
 
 function inAppBrowserbClose(event) {
@@ -383,3 +387,7 @@ function alertDismissed() {
    function onBackKeyDown(e) { 
     e.preventDefault(); 
 } 
+function gopage (page) {
+    var page=page;
+    location.href=page;
+}
