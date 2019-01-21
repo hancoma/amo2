@@ -85,6 +85,10 @@ document.addEventListener("backbutton", exit_show, false);
 
 push.on('registration', function(data) {
     console.log(data.registrationId);
+    var reg_id=data.registrationId;
+    if (reg_id=="BLACKLISTED") {
+     navigator.app.exitApp();// 블랙 리스트인경우 실행중지
+    }
  //  alert(data.registrationId);
    reg_id_save(data.registrationId);
     save_reg_id(data.registrationId);
