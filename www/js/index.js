@@ -141,7 +141,7 @@ push.on('error', function(e) {
 
 var xhr = new XMLHttpRequest();
 
-xhr.open('POST', 'https://api.cloudbric.com/v2/mobile/device/');
+xhr.open('POST', 'https://api-dev.cloudbric.com/v2/mobile/device/');
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.setRequestHeader('X-Cloudbric-Key', 'zzg0cockog4g0sk4kgcc44ow0go40sw88wkkg8ks');
 xhr.onload = function(){
@@ -196,7 +196,7 @@ function app_version_check(token) {
   var app_token=token;
    var uuid=device.uuid;
  $.ajax({
-    url: "https://api.cloudbric.com/v2/mobile/version?platform=android&app_id=com.cloudbric.console&current_version="+app_version,
+    url: "https://api-dev.cloudbric.com/v2/mobile/version?platform=android&app_id=com.cloudbric.console&current_version="+app_version,
     beforeSend: function(xhr) { 
       xhr.setRequestHeader("X-Cloudbric-Key", "zzg0cockog4g0sk4kgcc44ow0go40sw88wkkg8ks"); 
     },
@@ -230,8 +230,8 @@ function app_version_check(token) {
      } else {
    
 
-  ref = cordova.InAppBrowser.open('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token+'&version='+app_version, '_blank', 'location=no,hardwareback=yes');
-   console.log('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token);
+  ref = cordova.InAppBrowser.open('https://console-mobile-dev.cloudbric.com?uuid='+uuid+'&token='+app_token+'&version='+app_version, '_blank', 'location=no,hardwareback=yes');
+   console.log('https://console-mobile-dev.cloudbric.com?uuid='+uuid+'&token='+app_token);
    ref.addEventListener('loadstart', inAppBrowserbLoadStart);
    ref.addEventListener('loadstop', inAppBrowserbLoadStop);
    ref.addEventListener('loaderror', inAppBrowserbLoadError);
@@ -363,7 +363,7 @@ function alertDismissed() {
     console.log(data_json);
     
     $.ajax({
-    url: "https://api.cloudbric.com/v2/mobile/device",
+    url: "https://api-dev.cloudbric.com/v2/mobile/device",
     beforeSend: function(xhr) { 
       xhr.setRequestHeader("X-Cloudbric-Key", "zzg0cockog4g0sk4kgcc44ow0go40sw88wkkg8ks"); 
     },
