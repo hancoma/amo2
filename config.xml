@@ -7,8 +7,8 @@
 <preference name='phonegap-version' value='cli-7.0.1' />
 <preference name='pgb-builder-version' value='2' />
   <preference name="DisallowOverscroll" value="true"/>
-    <preference name="android-minSdkVersion" value="19"/>
-   <preference name="android-targetSdkVersion" value="26" />
+    
+   <preference name="android-targetSdkVersion" value="27" />
    <preference name="fullscreen" value="false" />
    <preference name="android-windowSoftInputMode" value="adjustResize"></preference>
   <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1"/>
