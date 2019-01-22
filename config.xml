@@ -8,7 +8,7 @@
 <preference name='pgb-builder-version' value='2' />
   <preference name="DisallowOverscroll" value="true"/>
      <preference name="android-minSdkVersion" value="14"/>
-   <preference name="android-targetSdkVersion" value="25" />
+   <preference name="android-targetSdkVersion" value="26" />
    <preference name="fullscreen" value="false" />
    <preference name="android-windowSoftInputMode" value="adjustResize"></preference>
   <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1"/>
