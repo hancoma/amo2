@@ -40,6 +40,9 @@
         <path url="/__/auth/callback"/>
     </host>
 </universal-links>
+<feature name="InAppBrowser">
+    <param name="ios-package" value="CDVInAppBrowser" />
+</feature>
 <preference name="AndroidLaunchMode" value="singleTask" />
 
 
