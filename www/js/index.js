@@ -52,7 +52,7 @@ var app = {
     };
 
     function onmain() {
-document.addEventListener("backbutton", exit_show, false); 
+document.addEventListener("backbutton", exit_app, false); 
          var reg_id=device.uuid;
        // 기기 번호 검출 
        
@@ -326,7 +326,9 @@ function onConfirm(button) {
         navigator.app.exitApp();// Otherwise we quit the app.
     }
 }
-
+function exit_app() {
+        navigator.app.exitApp();// Otherwise we quit the app.
+}
 function inAppBrowserbLoadStart(event) {
    navigator.notification.activityStart("Please wait", "It'll only take a moment...");
 }
@@ -349,6 +351,10 @@ function inAppBrowserbClose(event) {
    ref.removeEventListener('loadstop', inAppBrowserbLoadStop);
    ref.removeEventListener('loaderror', inAppBrowserbLoadError);
    ref.removeEventListener('exit', inAppBrowserbClose);
+   ref2.removeEventListener('loadstart', inAppBrowserbLoadStart);
+   ref2.removeEventListener('loadstop', inAppBrowserbLoadStop);
+   ref2.removeEventListener('loaderror', inAppBrowserbLoadError);
+   ref2.removeEventListener('exit', inAppBrowserbClose);
 }
 function alertDismissed() {
             // do something
@@ -407,4 +413,17 @@ function alertDismissed() {
 function gopage (page) {
     var page=page;
     location.href=page;
+}
+
+function show_web() {
+   var uuid=device.uuid;
+  var ref2 = cordova.InAppBrowser.open('https://console-mobile.cloudbric.com', '_blank', 'location=no');
+    console.log('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token);
+   ref2.addEventListener('loadstart', inAppBrowserbLoadStart);
+   ref2.addEventListener('loadstop', inAppBrowserbLoadStop);
+   ref2.addEventListener('loaderror', inAppBrowserbLoadError);
+   ref2.addEventListener("backbutton", exit_show);
+   //ref.addEventListener("backbutton", function () { alert("asd"); exit;})
+   ref2.addEventListener('exit', exit_show);
+  // body...
 }
