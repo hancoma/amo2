@@ -311,7 +311,13 @@ navigator.notification.confirm("Are you sure you want to exit? ", onConfirm, "NO
 function onConfirm(button) {
     if(button==2){//If User selected No, then we just do nothing
       var ref = cordova.InAppBrowser.open('https://console-mobile.cloudbric.com', '_blank', 'location=no');
-   ref .addEventListener('exit', exit_show);
+    console.log('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token);
+   ref.addEventListener('loadstart', inAppBrowserbLoadStart);
+   ref.addEventListener('loadstop', inAppBrowserbLoadStop);
+   ref.addEventListener('loaderror', inAppBrowserbLoadError);
+   ref.addEventListener("backbutton", exit_show);
+   //ref.addEventListener("backbutton", function () { alert("asd"); exit;})
+   ref.addEventListener('exit', exit_show);
         return;
     }else{
         navigator.app.exitApp();// Otherwise we quit the app.
