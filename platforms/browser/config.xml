@@ -17,7 +17,7 @@
             <path url="/__/auth/callback" />
         </host>
     </universal-links>
-    <icon src="icon.png" />
+    <icon src="www/icon.png" />
     <access origin="*" />
     <access launch-external="true" origin="tel:*" />
     <allow-intent href="http://*/*" />
@@ -31,6 +31,7 @@
     <preference name="pgb-builder-version" value="2" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-targetSdkVersion" value="26" />
     <preference name="fullscreen" value="false" />
     <preference name="android-windowSoftInputMode" value="adjustResize" />
     <preference name="AndroidLaunchMode" value="singleTask" />

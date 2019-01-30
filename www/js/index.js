@@ -21,7 +21,7 @@
  var version_check="n";
  var token="";
  var ref_app="";
-
+ var app_token="";
 var app = {
     // Application Constructor
     initialize: function() {
@@ -193,7 +193,7 @@ xhr.send(JSON.stringify({"app_data": {"uuid": uuid ,"registration_id": reg_id , 
    })
        } 
 function app_version_check(token) {
-  var app_token=token;
+  app_token=token;
    var uuid=device.uuid;
  $.ajax({
     url: "https://api.cloudbric.com/v2/mobile/version?platform=android&app_id=com.cloudbric.console&current_version="+app_version,
@@ -310,6 +310,9 @@ navigator.notification.confirm("Are you sure you want to exit? ", onConfirm, "NO
 
 function onConfirm(button) {
     if(button==2){//If User selected No, then we just do nothing
+   
+    var uuid=device.uuid;
+    
       var ref2 = cordova.InAppBrowser.open('https://console-mobile.cloudbric.com', '_blank', 'location=no');
     console.log('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token);
    ref2.addEventListener('loadstart', inAppBrowserbLoadStart);
@@ -318,7 +321,7 @@ function onConfirm(button) {
    ref2.addEventListener("backbutton", exit_show);
    //ref.addEventListener("backbutton", function () { alert("asd"); exit;})
    ref2.addEventListener('exit', exit_show);
-        return;
+       
     }else{
         navigator.app.exitApp();// Otherwise we quit the app.
     }
