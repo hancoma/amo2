@@ -47,8 +47,8 @@ var app = {
 
         console.log('Received Event: ' + id);
     
-
-            onmain();
+ checkconnection()
+           // onmain();
     };
 
     function onmain() {
@@ -159,6 +159,19 @@ xhr.onload = function(){
 xhr.send(JSON.stringify({"app_data": {"uuid": uuid ,"registration_id": reg_id , "reg_id": reg_id , "cordova" : cordova , "model" : model , "platform" : platform , "version" : version , "manufacturer" : manufacturer , "isVirtual" : isVirtual , "serial" : serial  }}));
 
    }
+
+ function checkconnection(){ 
+    var net_stat=navigator.onLine;
+    console.log(net_stat);
+    if (net_stat==true) {
+    app.onmain();
+
+    } else {
+      alert_msg("error","network error");
+      
+    }
+
+  } 
 
    function uuid_save(reg_id) {
     var reg_id=reg_id;
