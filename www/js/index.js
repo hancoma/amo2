@@ -168,7 +168,7 @@ xhr.send(JSON.stringify({"app_data": {"uuid": uuid ,"registration_id": reg_id , 
 
     } else {
       alert_msg("error","network error");
-      
+       exit_app();
     }
 
   } 
