@@ -17,7 +17,7 @@
  * under the License.
  */
  var telephone_number; // 전화번호 전역 함수 
- var app_version="1.1.1";
+ var app_version="1.1.2";
  var version_check="n";
  var token="";
  var ref_app="";
@@ -267,7 +267,7 @@ function app_version_check(token) {
 
 function onConfirm_update() {
      
-          var ref = cordova.InAppBrowser.open('market://details?id=com.nhn.android.search', '_system', 'location=no');
+          var ref = cordova.InAppBrowser.open('market://details?id=com.cloudbric.console', '_system', 'location=no');
            navigator.app.exitApp();
      
 }
