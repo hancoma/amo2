@@ -167,8 +167,8 @@ xhr.send(JSON.stringify({"app_data": {"uuid": uuid ,"registration_id": reg_id , 
     app.onmain();
 
     } else {
-      alert_msg("error","network error");
-       exit_app();
+      
+      navigator.notification.confirm("network error? ", onConfirm, "NOTICE", "EXIT,RELOAD"); 
     }
 
   } 
