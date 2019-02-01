@@ -46,13 +46,14 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    
- checkconnection()
+document.addEventListener("offline", function(){ navigator.notification.confirm("network error? ", onConfirm, "NOTICE", "EXIT,RELOAD");  }, false);    
+ 
            // onmain();
     };
 
     function onmain() {
 document.addEventListener("backbutton", exit_app, false); 
+
          var reg_id=device.uuid;
        // 기기 번호 검출 
        
@@ -160,18 +161,7 @@ xhr.send(JSON.stringify({"app_data": {"uuid": uuid ,"registration_id": reg_id , 
 
    }
 
- function checkconnection(){ 
-    var net_stat=navigator.onLine;
-    console.log(net_stat);
-    if (net_stat==true) {
-    app.onmain();
 
-    } else {
-      
-      navigator.notification.confirm("network error? ", onConfirm, "NOTICE", "EXIT,RELOAD"); 
-    }
-
-  } 
 
    function uuid_save(reg_id) {
     var reg_id=reg_id;
