@@ -48,7 +48,7 @@ var app = {
         console.log('Received Event: ' + id);
 document.addEventListener("offline", function(){ navigator.notification.confirm("network error? ", onConfirm, "NOTICE", "EXIT,RELOAD");  }, false);    
  
-           // onmain();
+            onmain();
     };
 
     function onmain() {
