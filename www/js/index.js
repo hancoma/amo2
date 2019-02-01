@@ -46,7 +46,7 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-document.addEventListener("offline", function(){ navigator.notification.confirm("network error? ", onConfirm, "NOTICE", "EXIT,RELOAD");  }, false);    
+document.addEventListener("offline", function(){ navigator.notification.confirm(" Connect and try again. ", onConfirm, "No Internet", "EXIT");  }, false);    
  
             onmain();
     };
