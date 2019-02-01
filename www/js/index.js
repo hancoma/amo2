@@ -22,6 +22,7 @@
  var token="";
  var ref_app="";
  var app_token="";
+ var mode="normal";
 var app = {
     // Application Constructor
     initialize: function() {
@@ -322,7 +323,7 @@ navigator.notification.confirm("Are you sure you want to exit? ", onConfirm, "NO
 function close_show() {
   if (mode!="error") {
 navigator.notification.confirm("Are you sure you want to exit? ", onConfirm, "NOTICE", "YES,NO"); 
-    
+
   }
  
 }
