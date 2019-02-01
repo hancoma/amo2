@@ -248,7 +248,7 @@ function app_version_check(token) {
   // ref.addEventListener('loaderror', inAppBrowserbLoadError);
    ref.addEventListener("backbutton", exit_show);
    //ref.addEventListener("backbutton", function () { alert("asd"); exit;})
-   ref.addEventListener('exit', exit_show);
+   ref.addEventListener('exit', close_show);
 
      }
     },
@@ -319,6 +319,15 @@ function exit_show() {
 navigator.notification.confirm("Are you sure you want to exit? ", onConfirm, "NOTICE", "YES,NO"); 
 }
 
+function close_show() {
+  if (mode!="error") {
+navigator.notification.confirm("Are you sure you want to exit? ", onConfirm, "NOTICE", "YES,NO"); 
+    
+  }
+ 
+}
+
+
 function onConfirm(button) {
     if(button==2){//If User selected No, then we just do nothing
    
@@ -331,7 +340,7 @@ function onConfirm(button) {
  //  ref2.addEventListener('loaderror', inAppBrowserbLoadError);
    ref2.addEventListener("backbutton", exit_show);
    //ref.addEventListener("backbutton", function () { alert("asd"); exit;})
-   ref2.addEventListener('exit', exit_show);
+   ref2.addEventListener('exit', close_show);
        
     }else{
         navigator.app.exitApp();// Otherwise we quit the app.
@@ -435,6 +444,6 @@ function show_web() {
   // ref2.addEventListener('loaderror', inAppBrowserbLoadError);
    ref2.addEventListener("backbutton", exit_show);
    //ref.addEventListener("backbutton", function () { alert("asd"); exit;})
-   ref2.addEventListener('exit', exit_show);
+   ref2.addEventListener('exit', close_show);
   // body...
 }
