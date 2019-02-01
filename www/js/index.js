@@ -46,7 +46,15 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-document.addEventListener("offline", function(){ navigator.notification.confirm(" Connect and try again. ", onConfirm, "No Internet", "EXIT");  }, false);    
+document.addEventListener("offline", function(){  
+  // navigator.notification.confirm(" Connect and try again. ", onConfirm, "No Internet", "EXIT"); 
+   navigator.notification.activityStop();
+   mode="error";
+  
+   gopage("error.html");
+   ref.close();
+
+   }, false);    
  
             onmain();
     };
@@ -237,7 +245,7 @@ function app_version_check(token) {
    console.log('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token);
    ref.addEventListener('loadstart', inAppBrowserbLoadStart);
    ref.addEventListener('loadstop', inAppBrowserbLoadStop);
-   ref.addEventListener('loaderror', inAppBrowserbLoadError);
+  // ref.addEventListener('loaderror', inAppBrowserbLoadError);
    ref.addEventListener("backbutton", exit_show);
    //ref.addEventListener("backbutton", function () { alert("asd"); exit;})
    ref.addEventListener('exit', exit_show);
@@ -320,7 +328,7 @@ function onConfirm(button) {
     console.log('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token);
    ref2.addEventListener('loadstart', inAppBrowserbLoadStart);
    ref2.addEventListener('loadstop', inAppBrowserbLoadStop);
-   ref2.addEventListener('loaderror', inAppBrowserbLoadError);
+ //  ref2.addEventListener('loaderror', inAppBrowserbLoadError);
    ref2.addEventListener("backbutton", exit_show);
    //ref.addEventListener("backbutton", function () { alert("asd"); exit;})
    ref2.addEventListener('exit', exit_show);
@@ -424,7 +432,7 @@ function show_web() {
     console.log('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token);
    ref2.addEventListener('loadstart', inAppBrowserbLoadStart);
    ref2.addEventListener('loadstop', inAppBrowserbLoadStop);
-   ref2.addEventListener('loaderror', inAppBrowserbLoadError);
+  // ref2.addEventListener('loaderror', inAppBrowserbLoadError);
    ref2.addEventListener("backbutton", exit_show);
    //ref.addEventListener("backbutton", function () { alert("asd"); exit;})
    ref2.addEventListener('exit', exit_show);
