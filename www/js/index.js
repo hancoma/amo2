@@ -71,9 +71,7 @@ document.addEventListener("backbutton", exit_app, false);
           push = PushNotification.init({
     android: {
         senderID: "528703994079",
-        sound: true,
-            icon: 'notification_icon',
-            iconColor: 'blue'
+        sound: true
     },
 
     browser: {
