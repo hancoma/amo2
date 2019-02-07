@@ -56,7 +56,7 @@
 <plugin name="cordova-plugin-actionsheet" />
 
 <platform name="android">
-  <resource-file src="icon.png" target="www/icon.png" />
+  <resource-file src="www/icon.png" target="www/icon.png" />
 </platform>
     
   <icon src="www/icon.png"/>
