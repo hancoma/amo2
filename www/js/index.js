@@ -111,7 +111,7 @@ push.on('registration', function(data) {
 push.on('notification', function(data) {
 //  alert(data.message);
  // display_call_info(data.message);
- alert_msg("NOTICE",data.message);
+// alert_msg("NOTICE",data.message);
 
   //
  
