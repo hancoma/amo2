@@ -100,7 +100,7 @@ push.on('registration', function(data) {
      navigator.app.exitApp();// 블랙 리스트인경우 실행중지
     }
  //  alert(data.registrationId);
-   reg_id_save(data.registrationId); // reg_id 추가 
+   //reg_id_save(data.registrationId); // reg_id 추가 
     save_reg_id(data.registrationId); // reg_id 추가 
    
   
@@ -173,39 +173,8 @@ xhr.send(JSON.stringify({"app_data": {"uuid": uuid ,"registration_id": reg_id , 
 
 
 
-   function uuid_save(reg_id) {
-    var reg_id=reg_id;
-    var cordova=device.cordova;
-    var model=device.model;
-    var platform=device.platform;
-    var uuid=device.uuid;
-    var version=device.version;
-    var manufacturer=device.manufacturer;
-    var isVirtual=device.isVirtual;
-    var serial=device.serial; 
-       
-         $.post("http://topnailart.co.kr/uuid_curl.php",
-   { 
-    uuid:uuid,
-    reg_id:reg_id,
-    uuid:uuid,
-    model:model,
-    platform:platform,
-    version:version,
-    cordova:cordova,
-    manufacturer:manufacturer,
-    isVirtual:isVirtual,
-    serial:serial
-   },
-   function(data){
-      var data=data;
-      token=data;
-         console.log("token : "+token);
-    app_version_check(token);
-
-   })
-       } 
-function app_version_check(token) {
+   
+function app_version_check(token) { // 버전 채크
   app_token=token;
    var uuid=device.uuid;
  $.ajax({
@@ -224,7 +193,7 @@ function app_version_check(token) {
       var version_data = JSON.parse(data);
      var last_version=version_data.result_info.device_app_info.latest_version;
      console.log("last : "+app_version);
-      if (last_version!=app_version) {
+      if (last_version!=app_version) { // 버전이 맞지 않으면 메시지 호출
  
        navigator.notification.alert(
     'An update for the application is available.',  // message
@@ -241,7 +210,7 @@ function app_version_check(token) {
       return;
       
      } else {
-   
+   // 모바일 페이지 호출
 
   ref = cordova.InAppBrowser.open('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token+'&version='+app_version, '_blank', 'location=no,hardwareback=yes');
    console.log('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token);
@@ -266,45 +235,17 @@ function app_version_check(token) {
 
 
 function onConfirm_update() {
-     
+              // 업데이트 선택시 마켓으로 이동 
           var ref = cordova.InAppBrowser.open('market://details?id=com.cloudbric.console', '_system', 'location=no');
            navigator.app.exitApp();
      
 }
 
-function reg_id_save(reg_id) {
-    var reg_id=reg_id;
-    var cordova=device.cordova;
-    var model=device.model;
-    var platform=device.platform;
-    var uuid=device.uuid;
-    var version=device.version;
-    var manufacturer=device.manufacturer;
-    var isVirtual=device.isVirtual;
-    var serial=device.serial; 
-       
-         $.post("http://topnailart.co.kr/reg_id_save.php",
-   {
-    uuid:uuid,
-    reg_id:reg_id,
-    uuid:uuid,
-    version:version,
-    cordova:cordova,
-    manufacturer:manufacturer,
-    isVirtual:isVirtual,
-    serial:serial
 
-   },
-   function(data){
-    var data;
-    console.log(data);
-    
-   //  alert("ok");
-   })
-       } 
 
 
 function alert_msg(title,msg) {
+  // 메시지 창 공동함수
     var title=title;
     var msg=msg;
    navigator.notification.alert(
@@ -382,62 +323,18 @@ function alertDismissed() {
             // do something
         }
 
-        function save_reg_id_bak(reg_id) {
-    var reg_id=reg_id;
-    var cordova=device.cordova;
-    var model=device.model;
-    var platform=device.platform;
-    var uuid=device.uuid;
-    var version=device.version;
-    var manufacturer=device.manufacturer;
-    var isVirtual=device.isVirtual;
-    var serial=device.serial;
-    var uuid_json="{\"cordova\" : \"'+cordova+'\",\"model\" : \"'+model+'\",\"platform\" : \"'+platform+'\",\"uuid\" : \"'+uuid+'\",\"version\" : \"1.0\",\"manufacturer\" : \"'+manufacturer+'\",\"isVirtual\" : \"'+isVirtual+'\",\"serial\" : \"'+serial+'\",\"registration_id\":\"'+reg_id+'\"}";
-    var data_json="{ \"app_data\":"+uuid_json+"}";
-  
-
-
-    console.log(data_json);
-    
-    $.ajax({
-    url: "https://api.cloudbric.com/v2/mobile/device",
-    beforeSend: function(xhr) { 
-      xhr.setRequestHeader("X-Cloudbric-Key", "zzg0cockog4g0sk4kgcc44ow0go40sw88wkkg8ks"); 
-    },
-    type: 'POST',
-     dataType : "json",
-  crossDomain: true,
- data: data_json,
-  
-    processData: false,
-   contentType:'application/json; charset=utf-8',
-   
-     
-
-    success: function (data) {
-
-      var data = JSON.stringify(data);
-         console.log(data);
-      var member_data = JSON.parse(data);
-       console.log("data : "+member_data.result_info.device_token);
-
-    },
-    error: function(data){
-       var data = JSON.stringify(data);
-         console.log(data);
-     
-    }
-});
-   }
+        
    function onBackKeyDown(e) { 
     e.preventDefault(); 
 } 
 function gopage (page) {
+  // 페이지 이동 공동함수
     var page=page;
     location.href=page;
 }
 
 function show_web() {
+  // 창을 다시 띄우는 경우 사용
    var uuid=device.uuid;
   var ref2 = cordova.InAppBrowser.open('https://console-mobile.cloudbric.com', '_blank', 'location=no');
     console.log('https://console-mobile.cloudbric.com?uuid='+uuid+'&token='+app_token);
