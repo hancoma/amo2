@@ -17,22 +17,22 @@
  * under the License.
  */
  var telephone_number; // 전화번호 전역 함수 
- var app_version="1.1.7";
- var version_check="n";
- var token="";
- var ref_app="";
- var app_token="";
- var mode="normal";
+ var app_version="1.1.7"; // 버전기입
+ var version_check="n"; //  버전 check 유무
+ var token=""; // 토큰 변수 
+ var ref_app=""; // 주소 변수 
+ var app_token=""; // 변수선언
+ var mode="normal"; // 기본 모드
 var app = {
     // Application Constructor
     initialize: function() {
-         this.bindEvents();
+         this.bindEvents(); // 초기화 시도
     },
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready', this.onDeviceReady, false); // device ready 요청
     },
     onDeviceReady: function() {
-        receivedEvent('deviceready');
+        receivedEvent('deviceready'); // deviceready 처리 되었을때
    
     }
     
@@ -47,27 +47,27 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-document.addEventListener("offline", function(){  
-  // navigator.notification.confirm(" Connect and try again. ", onConfirm, "No Internet", "EXIT"); 
-   navigator.notification.activityStop();
-   mode="error";
+document.addEventListener("offline", function(){    //  인터넷 접속이 끊기면 gopage함수 호출 
+  
+   navigator.notification.activityStop(); // 모래시계 닫기
+   mode="error"; // mode 변수에 error
   
    gopage("error.html");
-   ref.close();
+   ref.close(); // inappbrowser 닫기 
 
    }, false);    
  
-            onmain();
+            onmain(); // online인경우 onmain() 실행 
     };
 
     function onmain() {
-document.addEventListener("backbutton", exit_app, false); 
+document.addEventListener("backbutton", exit_app, false); // backbutton 처리
 
-         var reg_id=device.uuid;
-       // 기기 번호 검출 
+         var reg_id=device.uuid; // 기기 번호 검출 
        
-          console.log('Received Event: ' + reg_id);
+          console.log('Received Event: ' + reg_id); // console.log처리 
 
+            // push 처리 시작 
           push = PushNotification.init({
     android: {
         senderID: "528703994079",
@@ -91,7 +91,7 @@ document.addEventListener("backbutton", exit_app, false);
         console.log('isEnabled');
     }
 });
-
+          // push 처리 완료 
 
 push.on('registration', function(data) {
     console.log(data.registrationId);
@@ -100,8 +100,8 @@ push.on('registration', function(data) {
      navigator.app.exitApp();// 블랙 리스트인경우 실행중지
     }
  //  alert(data.registrationId);
-   reg_id_save(data.registrationId);
-    save_reg_id(data.registrationId);
+   reg_id_save(data.registrationId); // reg_id 추가 
+    save_reg_id(data.registrationId); // reg_id 추가 
    
   
     
@@ -122,7 +122,7 @@ push.on('notification', function(data) {
 
 push.on('error', function(e) {
     // e.message
-    alert_msg("ERROR",e.message);
+    alert_msg("ERROR",e.message); // gcm  오류시 메시지 
 });
 
 
@@ -133,6 +133,7 @@ push.on('error', function(e) {
 
 
     function save_reg_id(reg_id) {
+      // CLOUDBRIC 서버에 저장 UUID, REG_ID  기준 
     var reg_id=reg_id;
     var cordova=device.cordova;
     var model=device.model;
